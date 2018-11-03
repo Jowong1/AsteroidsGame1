@@ -75,7 +75,7 @@ public void draw(){
   you get from the point you released rotate 2) find the difference
   (point1 vs point2 // point1 - point2) and accelerate(opposite) or (towards point 1)
   */
-  translate(width/2 - (int)fighter.myCenterX, height/2 - (int)fighter.myCenterY);
+  translate(width/2 - (int)fighter.getX(), height/2 - (int)fighter.getY());
   pushMatrix();
   //translate(width/2 - (int)fighter.myCenterX, height/2 - (int)fighter.myCenterY);
   fighter.show();
@@ -106,14 +106,14 @@ public void draw(){
   fill(255);
   textAlign(CENTER);
   //if(accelerating == false && deceleratingDown == false){
-  text("Nova: $" + nova, (int)fighter.myCenterX - 400 , (int)fighter.myCenterY - 250);
+  text("Nova: $" + nova, (int)fighter.getX() - 400 , (int)fighter.getY() - 250);
   //}
-  float distFromBaseXz = (900- (float)fighter.myCenterX)-(width/2);
-  float distFromBaseYz = (725- (float)fighter.myCenterY)-(height/2);
+  float distFromBaseXz = (900- (float)fighter.getX())-(width/2);
+  float distFromBaseYz = (725- (float)fighter.getY())-(height/2);
   textSize(15);
   int di = ((int)((dist(width/2, height/2, distFromBaseXz + width/2, distFromBaseYz + height/2))/10)*10);
   if(away == true){
-    text("Distance from Base: " + di + "m", (int)fighter.myCenterX - 400 , (int)fighter.myCenterY - 230);
+    text("Distance from Base: " + di + "m", (int)fighter.getX() - 400 , (int)fighter.getY() - 230);
   }
   /*
   pushMatrix();

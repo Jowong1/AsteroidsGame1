@@ -20,13 +20,13 @@ class Asteroid extends Floater{
   }
   
   public void show(){
-    translate((int)fighter.myCenterX - 400, (int)fighter.myCenterY - 250);
+    translate((int)fighter.getX() - 400, (int)fighter.getY() - 250);
     rotate(dRadians);
     fill(255,0, 0, 175);
     rect(40, 0, 25, 3, 50);
     // Unrotate
     rotate(-1*dRadians);
-    translate(-1*(int)fighter.myCenterX, -1*(int)fighter.myCenterY);
+    translate(-1*(int)fighter.getX(), -1*(int)fighter.getY());
   }
   
   public void move(){

@@ -33,13 +33,14 @@ class Base{
   private float close1GateShift = 1;
   private float close2GateShift = 1;
   private int countClosed, countClosed2;
+  private boolean inShip = false;
 
   //private String leftBox;
   //private int uSpeed;
   //float rot;
   public void show(){
-    bCX = baseCenterX - (int)fighter.myCenterX;
-    bCY = baseCenterY - (int)fighter.myCenterY;
+    bCX = baseCenterX - (int)fighter.getX();
+    bCY = baseCenterY - (int)fighter.getY();
     translate(0,0);
     //pushMatrix();
     //rotate(rot);
@@ -106,7 +107,9 @@ class Base{
       shipUpgrades();
       upgradeClosers();
       shipSigns();
+      inShip = true;
     }else{
+      inShip = false;
       textSize(30);
       shipMines();
       shipExterior();
@@ -194,10 +197,12 @@ class Base{
       ellipse(bCX + 60, bCY - 305, 15, 15);
       // Legs
       stroke(150);
+      if(inShip == true){
       line(bCX - 60, bCY - 305, bCX - 20, bCY - 355);
       line(bCX + 60, bCY - 305, bCX + 20, bCY - 355);
       line(bCX - 60, bCY - 425, bCX - 20, bCY - 375);
       line(bCX + 60, bCY - 425, bCX + 20, bCY - 375);
+      }
       // Container
       noStroke();
       fill(100);
@@ -571,8 +576,8 @@ class Base{
     }
     
     public void arrowHome(){
-      float distFromBaseX = (baseCenterX - (float)fighter.myCenterX)-(width/2);
-      float distFromBaseY = (baseCenterY - (float)fighter.myCenterY)-(height/2);
+      float distFromBaseX = (baseCenterX - (float)fighter.getX())-(width/2);
+      float distFromBaseY = (baseCenterY - (float)fighter.getY())-(height/2);
       //float di = dist(width/2, height/2, distFromBaseX + width/2, distFromBaseY + height/2);
       //println(di);
       if(distFromBaseX > 1000 || distFromBaseX < -1000 || distFromBaseY > 1000 || distFromBaseY < -1000){
@@ -584,7 +589,7 @@ class Base{
       strokeWeight(1);
       stroke(100, 200);
       //line(0,0, (float)fighter.myCenterX - bCX + 100, (float)fighter.myCenterY - bCY - 75);
-      line(width/2,height/2, baseCenterX - (float)fighter.myCenterX, baseCenterY-(float)fighter.myCenterY);
+      line(width/2,height/2, baseCenterX - (float)fighter.getX(), baseCenterY-(float)fighter.getY());
       //line(
       popMatrix();
       }else{

@@ -2,7 +2,7 @@ class Star //note that this class does NOT extend Floater
 {
   private int myX, myY, myR, myS;
   public Star(){
-    int starRange = 10000;
+    int starRange = 11000;
     myX = (int)(Math.random()*starRange);
     myY = (int)(Math.random()*starRange);//random(height);
     myR = (int)(Math.random()*5)+10;
@@ -31,7 +31,7 @@ class Star //note that this class does NOT extend Floater
     //translate(0,0);
     noStroke();
     fill(255, myS); //original 75 shade
-    ellipse(myX - (int)fighter.myCenterX, myY -(int)fighter.myCenterY, myR, myR);
+    ellipse(myX - (int)fighter.myCenterX - 5000, myY -(int)fighter.myCenterY - 5000, myR, myR);
     //ellipse(0,0,50,50);
     //ellipse(mouseX, mouseY, 10, 10);
   }
